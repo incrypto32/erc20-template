@@ -27,9 +27,8 @@ describe("Payment", () => {
   beforeEach(async () => {
     let Token = await ethers.getContractFactory("Token");
     token = (await Token.deploy()) as Token;
-    await token.changeCharityWallet(signers[1].address);
-    await token.changeDevWallet(signers[2].address);
-    await token.changeTaxWallet(signers[3].address);
+    await token.setCharityWallet(signers[1].address);
+    await token.setDevWallet(signers[2].address);
   });
 
   it("Token Details", async () => {
@@ -41,14 +40,14 @@ describe("Payment", () => {
   it("Wallet set check", async () => {
     expect(await token.charityWallet()).equal(signers[1].address);
     expect(await token.devWallet()).equal(signers[2].address);
-    expect(await token.taxWallet()).equal(signers[3].address);
   });
 
   it("Transfer check", async () => {
     await token.transfer(signers[4].address, real("100"));
+    expect(await token.balanceOf(signers[4].address)).equal(real("100"));
+    await token.connect(signers[4]).transfer(signers[5].address, real("100"));
     expect(await token.balanceOf(signers[1].address)).equal(real("3"));
     expect(await token.balanceOf(signers[2].address)).equal(real("3"));
-    expect(await token.balanceOf(signers[3].address)).equal(real("4"));
   });
 
   it("Balance", async () => {
