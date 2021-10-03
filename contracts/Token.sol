@@ -21,7 +21,6 @@ contract Token is Ownable, IERC20, IERC20Metadata {
     address public taxWallet =
         address(0xAe4139056854115A34BEc9f0B4ba4230de5611e7);
 
-    address[] private _excluded;
     uint256 private _totalSupply;
 
     string private _name;
@@ -37,10 +36,9 @@ contract Token is Ownable, IERC20, IERC20Metadata {
      * construction.
      */
     constructor() {
-        _name = "DRP";
+        _name = "DRTP Token";
         _symbol = "DRTP";
 
-        _excluded.push(msg.sender);
         _mint(msg.sender, 100 * 10**6 * 10**9);
     }
 

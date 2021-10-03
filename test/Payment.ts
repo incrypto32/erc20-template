@@ -6,7 +6,7 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Token } from "../typechain/Token";
 
 const tokenDetails = {
-  name: "DRP",
+  name: "DRTP Token",
   symbol: "DRTP",
   totalSupply: "1" + "0".repeat(17),
 };
