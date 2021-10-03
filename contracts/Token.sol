@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Token is ERC20, ERC20Burnable, Ownable {
-    constructor() ERC20("Vegan Community", "VEGAN") {
-        _mint(msg.sender, 269 * 1000000 * 10**18);
+    constructor() ERC20("intelX", "INTELX") Ownable() {
+        _mint(msg.sender, 250 * 1000000 * 10**18);
     }
 }
