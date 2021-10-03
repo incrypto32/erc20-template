@@ -5,11 +5,16 @@ import { assert, expect } from "chai";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Token } from "../typechain/Token";
 
+const tokenDetails = {
+  name: "MoneyBallToken",
+  symbol: "MBT",
+  totalySupply: "1000000" + "0".repeat(18),
+};
+
 describe("Payment", () => {
   let merchant: SignerWithAddress;
   let admin: SignerWithAddress;
   let subscriber: SignerWithAddress;
-
   let token: Token;
 
   before(async () => {
@@ -21,9 +26,15 @@ describe("Payment", () => {
     token = (await Token.deploy()) as Token;
   });
 
+  it("Check token details", async () => {
+    expect(await token.name()).equal("MoneyBallToken");
+    expect(await token.symbol()).equal("MBT");
+    expect(await token.totalSupply()).equal("MBT");
+  });
+
   it("Balance", async () => {
     let a = await token.balanceOf(admin.address);
-    expect(a).equal("269000000000000000000000000");
+    expect(a).equal("1000000000000000000000000");
     expect(await token.owner()).equal(admin.address);
   });
 

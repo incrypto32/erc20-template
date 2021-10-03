@@ -4,6 +4,7 @@ import "@typechain/hardhat";
 import "@nomiclabs/hardhat-etherscan";
 import { task, HardhatUserConfig } from "hardhat/config";
 import * as dotenv from "dotenv";
+
 task("accounts", "Prints the list of accounts", async (args, hre) => {
   const accounts = await hre.ethers.getSigners();
   for (const account of accounts) {
@@ -12,6 +13,7 @@ task("accounts", "Prints the list of accounts", async (args, hre) => {
 });
 
 dotenv.config();
+
 const PKS=[process.env.MY_PK!]
 const config: HardhatUserConfig = {
   solidity: "0.8.7",
@@ -19,10 +21,8 @@ const config: HardhatUserConfig = {
     testnet: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       chainId: 97,
-  
       accounts:PKS,
     },
-
     mainnet: {
       url: "https://bsc-dataseed.binance.org/",
       chainId: 56,

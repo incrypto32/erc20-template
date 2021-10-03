@@ -1,12 +1,11 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.7;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Token is ERC20, ERC20Burnable, Ownable {
-    constructor() ERC20("intelX", "INTELX") Ownable() {
-        _mint(msg.sender, 250 * 1000000 * 10**18);
+contract Token is ERC20Burnable, Ownable {
+    constructor() ERC20("MoneyBallToken", "MBT") Ownable() {
+        _mint(msg.sender, 1000000 * 10**18);
     }
 }
