@@ -5,32 +5,62 @@ import { assert, expect } from "chai";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Token } from "../typechain/Token";
 
+const tokenDetails = {
+  name: "DRP",
+  symbol: "DRTP",
+  totalSupply: "1" + "0".repeat(17),
+};
+
+const real = (inp: string) => inp + "0".repeat(9);
+
 describe("Payment", () => {
   let merchant: SignerWithAddress;
-  let admin: SignerWithAddress;
-  let subscriber: SignerWithAddress;
+
+  let signers: SignerWithAddress[];
 
   let token: Token;
 
   before(async () => {
-    [admin, merchant, subscriber] = await ethers.getSigners();
+    signers = await ethers.getSigners();
   });
 
   beforeEach(async () => {
     let Token = await ethers.getContractFactory("Token");
     token = (await Token.deploy()) as Token;
+    await token.changeCharityWallet(signers[1].address);
+    await token.changeDevWallet(signers[2].address);
+    await token.changeTaxWallet(signers[3].address);
+  });
+
+  it("Token Details", async () => {
+    expect(await token.totalSupply()).equal(tokenDetails.totalSupply);
+    expect(await token.name()).equal(tokenDetails.name);
+    expect(await token.symbol()).equal(tokenDetails.symbol);
+  });
+
+  it("Wallet set check", async () => {
+    expect(await token.charityWallet()).equal(signers[1].address);
+    expect(await token.devWallet()).equal(signers[2].address);
+    expect(await token.taxWallet()).equal(signers[3].address);
+  });
+
+  it("Transfer check", async () => {
+    await token.transfer(signers[4].address, real("100"));
+    expect(await token.balanceOf(signers[1].address)).equal(real("3"));
+    expect(await token.balanceOf(signers[2].address)).equal(real("3"));
+    expect(await token.balanceOf(signers[3].address)).equal(real("4"));
   });
 
   it("Balance", async () => {
-    let a = await token.balanceOf(admin.address);
-    expect(a).equal("269000000000000000000000000");
-    expect(await token.owner()).equal(admin.address);
+    let a = await token.balanceOf(signers[0].address);
+    expect(a).equal(tokenDetails.totalSupply);
+    expect(await token.owner()).equal(signers[0].address);
   });
 
   it("Transfer Ownership", async () => {
-    expect(await token.owner()).equal(admin.address);
-    token.transferOwnership(subscriber.address);
-    expect(await token.owner()).equal(subscriber.address);
-    expect(await token.owner()).not.equal(admin.address);
+    expect(await token.owner()).equal(signers[0].address);
+    token.transferOwnership(signers[1].address);
+    expect(await token.owner()).equal(signers[1].address);
+    expect(await token.owner()).not.equal(signers[0].address);
   });
 });
