@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Token is ERC20Burnable, Ownable {
-    constructor() ERC20("MoneyBallToken", "MBT") Ownable() {
-        _mint(msg.sender, 1000000 * 10**18);
+    constructor() ERC20("ShubToken", "SHB") Ownable() {
+        _mint(msg.sender, 1000000000000 * 10**18);
     }
 }

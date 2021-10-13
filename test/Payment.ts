@@ -6,9 +6,9 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Token } from "../typechain/Token";
 
 const tokenDetails = {
-  name: "MoneyBallToken",
-  symbol: "MBT",
-  totalySupply: "1000000" + "0".repeat(18),
+  name: "ShubToken",
+  symbol: "SHB",
+  totalySupply: "1000000000000" + "0".repeat(18),
 };
 
 describe("Payment", () => {
@@ -27,14 +27,14 @@ describe("Payment", () => {
   });
 
   it("Check token details", async () => {
-    expect(await token.name()).equal("MoneyBallToken");
-    expect(await token.symbol()).equal("MBT");
-    expect(await token.totalSupply()).equal("MBT");
+    expect(await token.name()).equal(tokenDetails.name);
+    expect(await token.symbol()).equal(tokenDetails.symbol);
+    expect(await token.totalSupply()).equal(tokenDetails.totalySupply);
   });
 
   it("Balance", async () => {
     let a = await token.balanceOf(admin.address);
-    expect(a).equal("1000000000000000000000000");
+    expect(a).equal(tokenDetails.totalySupply);
     expect(await token.owner()).equal(admin.address);
   });
 
