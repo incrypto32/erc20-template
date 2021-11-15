@@ -6,9 +6,10 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Token } from "../typechain/Token";
 
 const tokenDetails = {
-  name: "ShubToken",
-  symbol: "SHB",
-  totalySupply: "1000000000000" + "0".repeat(18),
+  name: "Genexis Coin",
+  symbol: "GXC",
+  totalySupply: "5000000" + "0".repeat(8),
+  decimals: "0".repeat(8)
 };
 
 describe("Payment", () => {
@@ -30,6 +31,7 @@ describe("Payment", () => {
     expect(await token.name()).equal(tokenDetails.name);
     expect(await token.symbol()).equal(tokenDetails.symbol);
     expect(await token.totalSupply()).equal(tokenDetails.totalySupply);
+    expect(await token.decimals).equal(tokenDetails.decimals);
   });
 
   it("Balance", async () => {

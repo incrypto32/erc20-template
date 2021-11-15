@@ -6,7 +6,7 @@ async function main() {
   const Token = await ethers.getContractFactory("Token");
   const data = Token.interface.encodeDeploy();
   const estimatedGas = await ethers.provider.estimateGas({ data: data });
-  console.log(estimatedGas.toString());
+  console.log("Estimated Gas Fees : ",estimatedGas.toString());
   const token = (await Token.deploy()) as Token;
 
   console.log("Contract Deployed");
