@@ -6,10 +6,10 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Token } from "../typechain/Token";
 
 const tokenDetails = {
-  name: "Genexis Coin",
-  symbol: "GXC",
-  totalySupply: "5000000" + "0".repeat(8),
-  decimals: "0".repeat(8)
+  name: "Metro Coin",
+  symbol: "MTR",
+  totalySupply: "10000000000" + "0".repeat(18),
+  decimals: "0".repeat(18)
 };
 
 describe("Payment", () => {
