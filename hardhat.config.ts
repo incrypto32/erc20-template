@@ -16,18 +16,26 @@ const PKS=[process.env.MY_PK!]
 const config: HardhatUserConfig = {
   solidity: "0.8.7",
   networks: {
-    testnet: {
-      url: "https://data-seed-prebsc-1-s1.binance.org:8545",
+    bsctestnet: {
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
       chainId: 97,
-      gasPrice:15000000000,
       accounts:PKS,
     },
-
-    mainnet: {
+    bscmainnet: {
       url: "https://bsc-dataseed.binance.org/",
       chainId: 56,
       accounts: PKS,
     },
+    // ethtestnet: {
+    //   url: "https://data-seed-prebsc-1-s1.binance.org:8545",
+    //   chainId: 97,
+    //   accounts:PKS,
+    // },
+    // ethmainnet: {
+    //   url: "https://bsc-dataseed.binance.org/",
+    //   chainId: 56,
+    //   accounts: PKS,
+    // },
   },
   etherscan: {
     apiKey:process.env.ETHERSCAN_API_KEY,

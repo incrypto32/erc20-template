@@ -1,5 +1,11 @@
 {
   "name": "hardhat-project",
+  "scripts": {
+    "bsctestnet": "hardhat run --network bsctestnet scripts/deploy.ts --show-stack-traces",
+    "bscmainnet": "hardhat run --network bscmainnet scripts/deploy.ts --show-stack-traces",
+    "ethtestnet": "hardhat run --network ethtestnet scripts/deploy.ts --show-stack-traces",
+    "ethmainnet": "hardhat run --network ethmainnet scripts/deploy.ts --show-stack-traces"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
