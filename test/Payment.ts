@@ -6,9 +6,9 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Token } from "../typechain/Token";
 
 const tokenDetails = {
-  name: "Metro Coin",
-  symbol: "MTR",
-  totalySupply: "10000000000" + "0".repeat(18),
+  name: "pixelAg",
+  symbol: "pxl",
+  totalySupply: "10000000" + "0".repeat(18),
   decimals: "0".repeat(18)
 };
 
