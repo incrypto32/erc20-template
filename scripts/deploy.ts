@@ -8,13 +8,14 @@ async function main() {
   const estimatedGas = await ethers.provider.estimateGas({ data: data });
   console.log("Estimated Gas Fees : ",estimatedGas.toString());
   const token = (await Token.deploy()) as Token;
-
   console.log("Contract Deployed");
   console.log(`Token address: ${token.address}`);
   console.log(`https://bscscan.com/token/${token.address}`);
   console.log(`https://testnet.bscscan.com/token/${token.address}`);
   console.log(`https://etherscan.com/token/${token.address}`);
   console.log(`https://ropsten.etherscan.com/token/${token.address}`);
+
+  
 }
 
 // We recommend this pattern to be able to use async/await everywhere
