@@ -6,10 +6,10 @@ import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Token } from "../typechain/Token";
 
 const tokenDetails = {
-  name: "BOG",
-  symbol: "BOG",
-  totalySupply: "1000000000000" + "0".repeat(7) ,
-  decimals: "0".repeat(7)
+  name: "1S218PA0031A",
+  symbol: "1S218PA0031A",
+  totalySupply: "21000000" + "0".repeat(8) ,
+  decimals: "0".repeat(8)
 };
 
 describe("Payment", () => {
