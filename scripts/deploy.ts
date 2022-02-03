@@ -1,5 +1,5 @@
 import { ethers } from "hardhat";
-import { Token } from "../typechain/Token";
+import { Token } from "../typechain-types/Token";
 
 async function main() {
   console.log("Deploying contract");

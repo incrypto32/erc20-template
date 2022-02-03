@@ -28,11 +28,14 @@ const config: HardhatUserConfig = {
       chainId: 56,
       accounts: PKS,
     },
-    // ethtestnet: {
-    //   url: "https://data-seed-prebsc-1-s1.binance.org:8545",
-    //   chainId: 97,
-    //   accounts:PKS,
-    // },
+    polygonMainnet: {
+      url: "https://polygon-rpc.com/",
+      accounts:PKS,
+    },
+    polygonMumbai: {
+      url: "https://rpc-mumbai.matic.today",
+      accounts:PKS,
+    },
     // ethmainnet: {
     //   url: "https://bsc-dataseed.binance.org/",
     //   chainId: 56,
